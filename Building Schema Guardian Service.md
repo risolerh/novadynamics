@@ -207,3 +207,64 @@ Fixed. Now rebuild and redeploy:
 ```bash
 make deploy
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+NovaDynamics — Walkthrough
+What was built
+A FastAPI service with two endpoints:
+
+Endpoint	Description
+GET /	Health check → {"status": "ok"}
+GET /schema_guardian	Fetches schema, detects missing metadata, generates AI descriptions, returns JSON report
+Project structure
+novadynamics/
+├── app/
+│   ├── __init__.py
+│   ├── server.py              # FastAPI app with both endpoints
+│   └── schema_guardian.py     # Core logic: fetch → analyze → LLM → report
+├── pyproject.toml             # Python 3.12, uv-managed deps
+├── Makefile                   # dev / test / build / deploy
+├── Dockerfile                 # python:3.12-slim + uv
+├── docker-compose.yml         # Single app service, port 80
+├── .env.example               # OPENROUTER_API_KEY placeholder
+├── .gitignore
+├── README.md
+└── PROMPT_LOG.md
+Key design decisions
+OpenRouter via openai SDK (compatible API) with mistralai/mistral-7b-instruct:free
+Graceful fallback — if no API key or LLM call fails, generates heuristic descriptions from field names
+Async throughout — httpx + AsyncOpenAI for non-blocking I/O
+Steps to run
+bash
+# 1. Install dependencies
+uv sync
+# 2. Set up environment
+cp .env.example .env
+# Edit .env with your OpenRouter API key (optional — fallback works without it)
+# 3. Start dev server
+make dev
+# 4. Test endpoints
+curl http://localhost:80/
+curl http://localhost:80/schema_guardian
+# 5. Deploy with Docker
+make deploy
+Remaining manual step
+Push to GitHub:
+
+bash
+git init
+git add .
+git commit -m "Initial commit: Schema Guardian service"
+git remote add origin https://github.com/risolerh/novadynamics.git
+git branch -m master main
+git push -u origin main --force
