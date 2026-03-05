@@ -12,11 +12,20 @@ I deployed this solution on my personal computer with docker LETSENCRYPT and VIR
 ## evidence 
 https://novadynamics.joses.mx/
 
-{"status":"ok"}
+```json
+{"status": "ok"}
+```
 
 https://novadynamics.joses.mx/schema_guardian
 
-{"collection":"employee_records","total_fields":7,"fields_missing_metadata":5,"report":"# Schema Guardian Report\n\n**Collection:** employee_records\n\n**Total fields:** 7 · **Missing metadata:** 5\n\n| Field | Suggested Description |\n|---|---|\n| id | Id (uuid) |\n| user_dob | User dob (date) |\n| emergency_contact_phone | Emergency contact phone (string) |\n| last_login_audit | Last login audit (timestamp) |\n| department_id | Department id (integer) |"}
+```json
+{
+  "collection": "employee_records",
+  "total_fields": 7,
+  "fields_missing_metadata": 5,
+  "report": "# Schema Guardian Report\n\n**Collection:** employee_records\n\n**Total fields:** 7 · **Missing metadata:** 5\n\n| Field | Suggested Description |\n|---|---|\n| id | Id (uuid) |\n| user_dob | User dob (date) |\n| emergency_contact_phone | Emergency contact phone (string) |\n| last_login_audit | Last login audit (timestamp) |\n| department_id | Department id (integer) |"
+}
+```
 
 ## Screenshot
 
