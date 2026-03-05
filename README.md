@@ -2,7 +2,7 @@
 
 This is my solution for the technical assessment for recruiting at CMS Expert (Directus).
 
-I add my intection with the model  claude opus "Building Schema Guardian Service.md" I only had one problem whith a route on de .py but sharing the error from "docker logs -f novadynamics-app-1
+I add my intection with antigravity IDE and the model claude opus "Building Schema Guardian Service.md" I only had one problem whith a route on de .py but sharing the error from "docker logs -f novadynamics-app-1
 and I solve it the problem
 
 On resume, I only generated the "PROMPT_LOG.md" file and all proyect was generated automatically by antigrabity IDE and OPUS model... expose my solution in my personal computer and I test it and works fine.
@@ -60,7 +60,26 @@ make deploy
 | GET | `/` | Health check — returns `{"status": "ok"}` |
 | GET | `/schema_guardian` | Analyze schema and return metadata report |
 
+
+
+## Project Structure
+
+```mermaid
+graph TD
+    A[novadynamics] --> B[app/]
+    A --> C[Dockerfile]
+    A --> D[docker-compose.yml]
+    A --> E[Makefile]
+    A --> F[pyproject.toml]
+    A --> G[.env.example]
+    B --> B1[__init__.py]
+    B --> B2[schema_guardian.py]
+    B --> B3[server.py]
+```
+
+
 ## License
 
 CMS Expert (Directus) Technical Assessment for Recruiting by Jose Ricardo Soler Hernandez
+
 
